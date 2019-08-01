@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<link>
+<meta charset="UTF-8">
+<title>Login</title>
+<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+<!--<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+<link rel="stylesheet" href="/assets/css/thirdParty/bootstrap.css">
+<script src="/assets/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<style>
+    body {
+        background-image: url("/assets/img/login.jpg");
+        background-color: #cccccc;
+        background-size: cover;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .title {
+        font-family: 微软雅黑,宋体,Verdana,Arial;
+        font-size: 20px;
+    }
+</style>
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-md-4"></div>
+            <div class="col-6 col-md-4"></div>
+            <div class="col-6 col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-4"></div>
+            <div class="col-6 col-md-4">
+                <!--<div style="height: 20%;" class="center title" th:text="${brand}" ></div>-->
+                <div class="center mt-3 text-danger" id="error"></div>
+                <form action="/scout/login" method="post" class="inputField">
+                    <div class="center mt-3">
+                        <input type="text" name="username" placeholder="username" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" required="required"/>
+                    </div>
+
+                    <div class="center mt-3">
+                        <input type="password" name="password" placeholder="password" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" required="required"/>
+                    </div>
+                    <div class="center mt-3"><input type="submit" value="Login" class="btn btn-warning"/></div>
+                </form>
+            </div>
+            <div class="col-6 col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-4"></div>
+            <div class="col-6 col-md-4"></div>
+            <div class="col-6 col-md-4"></div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="outter_center">
+    <form action="login" method="post" class="center">
+        <div>username:<input type="text" name="username"/></div>
+        <div>password:<input type="password" name="password"/></div>
+        <input type="submit" value="go" class="btn btn-warning"/>
+    </form>
+</div>-->
+
+<script th:inline="javascript">
+    var error = /*[[${errorMsg}]]*/ '';
+    $(document).ready(function () {
+        if(error){
+            $('#error').html(error);
+        }
+        $('.row').height(($(window).height() / 3));
+    });
+
+    $(window).resize(function () {
+        $('.row').height(($(window).height() / 3));
+    });
+</script>
+</body>
+</html>
+
